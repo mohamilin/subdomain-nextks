@@ -19,6 +19,7 @@ export async function POST(request) {
   try {
     // Define the file path
     const filePath = path.join(process.cwd(), "subdomains.json");
+    console.log({filePath})
 
     // Read the existing file (async)
     const fileData = await fs.readFile(filePath, "utf8");
@@ -36,6 +37,7 @@ export async function POST(request) {
     );
   } catch (error) {
     // Handle any errors (e.g., file not found)
+    console.log(error)
     return NextResponse.json(
       { error: "Error handling subdomains" },
       { status: 500 }
