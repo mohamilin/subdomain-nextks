@@ -48,7 +48,8 @@ export default async function middleware(req) {
     "trillionclues.com.com",
     "yourdomain.com",
     "momentify.com",
-    "subdomain.localhost"
+    "subdomain.localhost",
+    "subdomain-nextjs-rho.vercel.app"
   ]
 
   // Check if the current hostname is in the list of allowed domains
@@ -62,9 +63,6 @@ export default async function middleware(req) {
   // If user is on an allowed domain and it's not a subdomain, allow the request
   if (isAllowedDomain && !subdomains.some(d => d.subdomain === subdomain)) {
     return NextResponse.next()
-  } else {
-    console.log({subdomain}, '121')
-
   }
 
   const subdomainData = subdomains.find(d => d.subdomain === subdomain)
