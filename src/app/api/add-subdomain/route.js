@@ -39,7 +39,7 @@ export async function POST(request) {
     // Handle any errors (e.g., file not found)
     console.log(error)
     return NextResponse.json(
-      { error: "Error handling subdomains" },
+      { error: "Error handling subdomains", detail:error },
       { status: 500 }
     );
   }
