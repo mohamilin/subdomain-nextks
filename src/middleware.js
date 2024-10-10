@@ -56,10 +56,12 @@ export default async function middleware(req) {
   const isAllowedDomain = allowedDomains.some(domain =>
     hostname.includes(domain)
   )
+  console.log({isAllowedDomain}, 'isAllowedDomain')
 
   // Extract the potential subdomain from the URL
   const subdomain = hostname.split(".")[0]
- 
+  console.log({subdomain}, 'subdomain')
+
   // If user is on an allowed domain and it's not a subdomain, allow the request
   if (isAllowedDomain && !subdomains.some(d => d.subdomain === subdomain)) {
     return NextResponse.next()
@@ -67,7 +69,7 @@ export default async function middleware(req) {
 
   const subdomainData = subdomains.find(d => d.subdomain === subdomain)
 
-  console.log({subdomainData})
+  console.log({subdomainData}, 'subdomainData')
   if (subdomainData) {
     // Rewrite the URL to a dynamic path based on the subdomain
     return NextResponse.rewrite(
