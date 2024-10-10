@@ -56,7 +56,7 @@ export default async function middleware(req) {
   const isAllowedDomain = allowedDomains.some(domain =>
     hostname.includes(domain)
   )
-  console.log({isAllowedDomain}, 'isAllowedDomain')
+  console.log({isAllowedDomain, allowedDomains}, 'isAllowedDomain')
 
   // Extract the potential subdomain from the URL
   const subdomain = hostname.split(".")[0]
