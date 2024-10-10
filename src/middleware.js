@@ -32,7 +32,9 @@ const subdomains = [
 
 
 export const config = {
-  matcher: ["/((?!api/|_next/|_static/|_vercel|[\\w-]+\\.\\w+).*)"]
+  // matcher: ["/((?!api/|_next/|_static/|_vercel|[\\w-]+\\.\\w+).*)"]
+  matcher: ["/((?!api|_next|static|_vercel|favicon.ico).*)"]
+
 }
 
 export default async function middleware(req) {
