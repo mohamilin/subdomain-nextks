@@ -5,6 +5,7 @@ export default function LoginPage() {
   const params = useParams();
   const tenant = params.subdomain;
 
+  console.log({tenant})
   return (
     <div className="flex flex-col min-h-screen items-center justify-center bg-gray-50">
       <div className="bg-white shadow-md rounded-lg p-8 max-w-md w-full">
