@@ -1,7 +1,30 @@
+"use client"
 import Image from "next/image";
 import styles from "./page.module.css";
+import { useState } from "react";
 
 export default function Home() {
+  const [subdomain, setSubdomain] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const response = await fetch("/api/add-subdomain", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ subdomain }),
+    });
+
+    if (response.ok) {
+      alert("Subdomain added successfully!");
+    } else {
+      alert("Failed to add subdomain");
+    }
+
+    setSubdomain("");
+  };
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
@@ -20,31 +43,19 @@ export default function Home() {
           <li>Save and see your changes instantly.</li>
         </ol>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="subdomain">Subdomain:</label>
+          <input
+            type="text"
+            id="subdomain"
+            className="text-black p-1 mx-5"
+            value={subdomain}
+            onChange={(event) => setSubdomain(event.target.value)}
+          />
+          <button type="submit" className="text-black bg-white p-1">
+            Add Subdomain
+          </button>
+        </form>
       </main>
       <footer className={styles.footer}>
         <a
