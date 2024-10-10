@@ -1,5 +1,35 @@
 import { NextResponse } from "next/server"
-import subdomains from "../subdomains.json"
+// import subdomains from "../subdomains.json"
+
+
+const subdomains = [
+  {
+    "subdomain": "client1"
+  },
+  {
+    "subdomain": "amilin"
+  },
+  {
+    "subdomain": "323232"
+  },
+  {
+    "subdomain": "satu"
+  },
+  {
+    "subdomain": "hai"
+  },
+  {
+    "subdomain": "pala"
+  },
+  {
+    "subdomain": "subdomain"
+  },
+  {
+    "subdomain": "see"
+  }
+]
+
+
 
 export const config = {
   matcher: ["/((?!api/|_next/|_static/|_vercel|[\\w-]+\\.\\w+).*)"]
